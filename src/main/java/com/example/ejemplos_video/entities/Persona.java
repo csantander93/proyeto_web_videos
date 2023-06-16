@@ -16,6 +16,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import lombok.EqualsAndHashCode;
 
 @Entity
@@ -51,6 +52,7 @@ public class Persona {
 	private LocalDateTime updatedAt;
 	
 	//Se podria agregar @NotNull si se queire que la relación exista siempre
+	@NotNull
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "avatar_id", referencedColumnName = "id")
 	@JsonIgnore
