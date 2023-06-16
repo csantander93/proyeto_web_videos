@@ -22,7 +22,7 @@ public class PersonaModelo {
 	private String pais;
 	
 	private AvatarModelo avatar;
-
+   
 	public AvatarModelo getAvatar() {
 		return avatar;
 	}

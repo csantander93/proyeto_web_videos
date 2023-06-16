@@ -20,4 +20,4 @@ public class ViewRouteHelpers {
 	//HELPERS PRUEBA AVATAR
 	public final static String AVATAR_VISTA = "avatar/viewAvatar";
 
-}
+} 

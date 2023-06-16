@@ -5,6 +5,7 @@ import java.util.Objects;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
@@ -132,7 +133,7 @@ public class Persona {
 	
 
 	public String getPais() {
-		return pais;
+		return pais; 
 	}
 
 	public void setPais(String pais) {
