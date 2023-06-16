@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/uces_videos
     username: root
-    password: root
+    password: csantander93
   jpa:
     open-in-view: false
     show-sql: true
