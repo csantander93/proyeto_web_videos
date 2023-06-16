@@ -1,0 +1,13 @@
+<table>
+    <tr>
+        <th>Email</th>
+        <th>Web</th>
+    </tr>
+    
+    <tr th:each="a : ${listaAvatar}">
+		<td th:text="${a.id}"></td>
+        <td th:text="${a.email}"></td>
+        <td th:text="${a.webPersonal}"></td>
+        <td th:text="${a.persona.apellido}"></td>
+    </tr>
+</table>

@@ -1,0 +1,19 @@
+<table>
+    <tr>
+        <th>Apellido</th>
+        <th>Nombres</th>
+        <th>DNI</th>
+        <th>Pais</th>
+        <th>Email</th>
+        <th>Web</th>
+    </tr>
+    
+    <tr th:each="p : ${listaPersonas}">
+        <td th:text="${p.apellido}"></td>
+        <td th:text="${p.nombres}"></td>
+        <td th:text="${p.dni}"></td>
+        <td th:text="${p.pais}"></td>
+        <td th:text="${p.avatar.email}"></td>
+        <td th:text="${p.avatar.webPersonal}"></td>
+    </tr>
+</table>

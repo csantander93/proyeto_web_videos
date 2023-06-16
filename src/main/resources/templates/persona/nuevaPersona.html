@@ -1,0 +1,28 @@
+<h1>- - - - PERSONA - - - -</h1> 
+<p> APELLIDO: <span th:text="${persona.apellido}"/><p>
+<p> NOMBRES: <span th:text="${persona.nombres}" /><p>
+<p> DNI: <span th:text="${persona.dni}" /> <p> 
+<p> PAIS: <span th:text="${persona.pais}" /> <p>
+<p> AVATAR: <span th:text="${persona.avatar.email}" /> <p>
+<p> WEB: <span th:text="${persona.avatar.webPersonal}" /> <p>
+
+<table>
+    <tr>
+        <th>Apellido</th>
+        <th>Nombres</th>
+        <th>DNI</th>
+        <th>Pais</th>
+        <th>Email</th>
+        <th>Web</th>
+    </tr>
+    
+    <tr th:each="p : ${listaPersonas}">
+        <td th:text="${p.apellido}"></td>
+        <td th:text="${p.nombres}"></td>
+        <td th:text="${p.dni}"></td>
+        <td th:text="${p.pais}"></td>
+        <td th:text="${p.avatar.email}"></td>
+        <td th:text="${p.avatar.webPersonal}"></td>
+    </tr>
+</table>
+

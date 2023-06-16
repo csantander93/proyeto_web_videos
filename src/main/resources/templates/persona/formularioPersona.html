@@ -1,0 +1,22 @@
+<p>Bienvenido --->!!!! <span th:text="${usuario}"></span></p>
+<form action="#" th:action="@{nuevapersona}" th:object="${persona}" method="post">
+    <p>APELLIDO: <input type="text" th:field="*{apellido}" /></p>
+    <p th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">Apellido ERROR</p>
+    
+    <p>NOMBRES: <input type="text" th:field="*{nombres}" /></p>
+    <p th:if="${#fields.hasErrors('nombres')}" th:errors="*{nombres}">Nombres ERROR</p>
+    
+    <p>DNI: <input type="text" th:field="*{dni}" /></p>
+    <p th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}">DNI ERROR</p>
+    
+    <p>PAIS: <input type="text" th:field="*{pais}" /></p>
+    <p th:if="${#fields.hasErrors('dni')}" th:errors="*{pais}">PAIS ERROR</p>
+
+    <!-- AGREGO LOS DATOS DEL AVATAR -->
+    <p>E-mail: <input type="text" th:field="*{avatar.email}" /></p>
+
+    <p>Web: <input type="text" th:field="*{avatar.webPersonal}" /></p>
+
+    <input type="submit">
+    
+</form>
