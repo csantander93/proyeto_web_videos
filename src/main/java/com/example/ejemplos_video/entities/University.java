@@ -15,6 +15,23 @@
 //	//Si fuese unidireccional se deberia mapear solo de este lado y no del muchos
 //	@OneToMany(mappedBy = "university", cascade = CascadeType.ALL, orphanRemoval = true)
 //	private Set<Student> students;
+//	
+//	public University () {}
+//
+//	public Set<Student> getStudents() {
+//		return students;
+//	}
+//
+//	public void setStudents(Set<Student> students) {
+//		this.students = students;
+//	}
+//
+//	public University(Set<Student> students) {
+//		super();
+//		this.students = students;
+//	}
+//	
+//	
 //
 //	
 //}

@@ -19,7 +19,6 @@ public class PersonaModelo {
 	@Min(500000)
 	@Max(99999999)
 	private long dni;
-	private String pais;
 	
 	private AvatarModelo avatar;
    
@@ -63,14 +62,6 @@ public class PersonaModelo {
 		this.dni = dni;
 	}
 
-	public String getPais() {
-		return pais;
-	}
-
-	public void setPais(String pais) {
-		this.pais = pais;
-	}
-
 	@Override
 	public String toString() {
 		return "Persona [apellido=" + apellido + ", nombres=" + nombres + ", dni=" + dni + "]";
@@ -81,26 +72,24 @@ public class PersonaModelo {
 	public PersonaModelo(int id,
 			@Size(min = 3, max = 15) @Pattern(regexp = "^[A-Za-z]+$", message = "El apellido solo debe contener caracteres") String apellido,
 			@Size(min = 3, max = 30) @Pattern(regexp = "^[A-Za-z]+$", message = "El nombre solo debe contener caracteres") String nombres,
-			@Min(500000) @Max(99999999) long dni, String pais, AvatarModelo avatar) {
+			@Min(500000) @Max(99999999) long dni, AvatarModelo avatar) {
 		super();
 		this.id = id;
 		this.apellido = apellido;
 		this.nombres = nombres;
 		this.dni = dni;
-		this.pais = pais;
 		this.avatar = avatar;
 	}
 	
 	public PersonaModelo(int id,
 			@Size(min = 3, max = 15) @Pattern(regexp = "^[A-Za-z]+$", message = "El apellido solo debe contener caracteres") String apellido,
 			@Size(min = 3, max = 30) @Pattern(regexp = "^[A-Za-z]+$", message = "El nombre solo debe contener caracteres") String nombres,
-			@Min(500000) @Max(99999999) long dni, String pais) {
+			@Min(500000) @Max(99999999) long dni) {
 		super();
 		this.id = id;
 		this.apellido = apellido;
 		this.nombres = nombres;
 		this.dni = dni;
-		this.pais = pais;
 
 	}
 	

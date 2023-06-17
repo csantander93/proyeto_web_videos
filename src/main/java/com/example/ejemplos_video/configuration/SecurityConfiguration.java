@@ -32,7 +32,7 @@ public class SecurityConfiguration{
 
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests()
-				.requestMatchers("/css/*", "/imgs/*", "/js/*", "/vendor/bootstrap/css/*",
+				.requestMatchers("/css/*", "/assets/*", "/js/*", "/images/*", "/vendor/bootstrap/css/*",
 						"/vendor/jquery/*", "/vendor/bootstrap/js/*").permitAll()
 				.anyRequest().authenticated()
 			.and()

@@ -7,10 +7,14 @@ spring:
     open-in-view: false
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
       naming:
         strategy: org.hibernate.cfg.ImprovedNaming.Strategy
     properties:
       dialect: org.hibernate.dialect.MySQL8Dialect
   thymeleaf:
     cache: false
+  servlet:
+   multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB

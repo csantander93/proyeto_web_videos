@@ -1,19 +1,97 @@
-	
-	<table>
-    <tr>
-        <th>Apellido</th>
-        <th>Nombres</th>
-        <th>DNI</th>
-        <th>Pais</th>
-        <th>Email</th>
-        <th>Web</th>
-    </tr>
-    
-    <tr th:each="p : ${listaPersonas}">
-        <td th:text="${p.apellido}"></td>
-        <td th:text="${p.nombres}"></td>
-        <td th:text="${p.dni}"></td>
-        <td th:text="${p.pais}"></td>
-	    <td th:if="${p.avatar != null}" th:text="${p.avatar.email}"></td>
-	    <td th:if="${p.avatar != null}" th:text="${p.avatar.webPersonal}"></td>
-    </tr>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Personas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #292929;
+            color: #fff;
+        }
+
+        h1 {
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #1f1f1f;
+        }
+
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #1f1f1f;
+        }
+
+        tr:nth-child(even) {
+            background-color: #313131;
+        }
+
+        tr:hover {
+            background-color: #555555;
+        }
+    </style>
+</head>
+<body>
+    <h1>- - - - PERSONA - - - -</h1>
+
+    <a href="/personas/crearPersona">Agregar Persona:</a>
+
+    <table>
+        <tr>
+            <th>Apellido</th>
+            <th>Nombres</th>
+            <th>DNI</th>
+            <th>Email</th>
+            <th>Web</th>
+            <th>Imagen</th>
+        </tr>
+        
+        <tr th:each="p : ${listaPersonas}">
+            <td th:text="${p.apellido}"></td>
+            <td th:text="${p.nombres}"></td>
+            <td th:text="${p.dni}"></td>
+
+            <td th:if="${p.avatar != null}" th:text="${p.avatar.email}"></td>
+            <td th:if="${p.avatar != null}" th:text="${p.avatar.webPersonal}"></td>
+            
+            <td>
+                <a th:href="@{/personas/editarPersona/} + ${p.id}" th:text="'Editar'" title="Editar"></a>
+            </td>
+            
+            <td>
+                <a th:href="@{/personas/eliminarPersona/}+ ${p.id}" th:text="'Borrar'" title="Borrar"></a>
+            </td>
+
+            <!-- Voy a dejar comentado lo de la imagen porque al momento no funcionaba -->
+            <!--
+            <td> 
+                <img
+                    th:if="${p.avatar.imagen != null}" th:alt="${ p.avatar.imagen }"
+                    th:src="@{'/images/' + ${ p.avatar.imagen }}"
+                    style="max-width: 15%;" 
+            </td>-->
+        </tr>
+    </table>
+</body>
+</html>
+

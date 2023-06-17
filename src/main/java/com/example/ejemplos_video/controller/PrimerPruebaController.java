@@ -10,13 +10,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.ejemplos_video.helpers.ViewRouteHelpers;
 
 @Controller
-@RequestMapping("/primerprueba")
+@RequestMapping()
 
 public class PrimerPruebaController {
 	
-	@GetMapping("iniciando")
+	@GetMapping("inicio")
 	public String iniciandoPrueba () {
-		return ViewRouteHelpers.INDEX_INICIANDO;
+		return ViewRouteHelpers.INDEX;
 	}
 	
 	@GetMapping("/nombre") // ?nombre_variable=Cristian

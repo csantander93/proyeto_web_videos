@@ -1,22 +1,73 @@
-<p>Bienvenido --->!!!! <span th:text="${usuario}"></span></p>
-<form action="#" th:action="@{nuevapersona}" th:object="${persona}" method="post">
-    <p>APELLIDO: <input type="text" th:field="*{apellido}" /></p>
-    <p th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">Apellido ERROR</p>
-    
-    <p>NOMBRES: <input type="text" th:field="*{nombres}" /></p>
-    <p th:if="${#fields.hasErrors('nombres')}" th:errors="*{nombres}">Nombres ERROR</p>
-    
-    <p>DNI: <input type="text" th:field="*{dni}" /></p>
-    <p th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}">DNI ERROR</p>
-    
-    <p>PAIS: <input type="text" th:field="*{pais}" /></p>
-    <p th:if="${#fields.hasErrors('dni')}" th:errors="*{pais}">PAIS ERROR</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulario de Persona</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #292929;
+            color: #fff;
+        }
 
-    <!-- AGREGO LOS DATOS DEL AVATAR -->
-    <p>E-mail: <input type="text" th:field="*{avatar.email}" /></p>
+        p {
+            margin-bottom: 10px;
+        }
 
-    <p>Web: <input type="text" th:field="*{avatar.webPersonal}" /></p>
+        form {
+            padding: 20px;
+            background-color: #1f1f1f;
+        }
 
-    <input type="submit">
-    
-</form>
+        input[type="text"] {
+            padding: 5px;
+            width: 200px;
+            border: none;
+            background-color: #313131;
+            color: #fff;
+        }
+
+        input[type="file"] {
+            width: 200px;
+            border: none;
+            background-color: #313131;
+            color: #fff;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .error-message {
+            color: #ff4d4d;
+        }
+    </style>
+</head>
+<body>
+    <p>Bienvenido --->!!!! <span th:text="${usuario}"></span></p>
+    <form action="#" th:action="@{nuevapersona}" th:object="${persona}" method="post" enctype="multipart/form-data">
+        <p>APELLIDO: <input type="text" th:field="*{apellido}" /></p>
+        <p th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}" class="error-message">Apellido ERROR</p>
+        
+        <p>NOMBRES: <input type="text" th:field="*{nombres}" /></p>
+        <p th:if="${#fields.hasErrors('nombres')}" th:errors="*{nombres}" class="error-message">Nombres ERROR</p>
+        
+        <p>DNI: <input type="text" th:field="*{dni}" /></p>
+        <p th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}" class="error-message">DNI ERROR</p>
+
+        <!-- AGREGO LOS DATOS DEL AVATAR -->
+        <p>E-mail: <input type="text" th:field="*{avatar.email}" /></p>
+
+        <p>Web: <input type="text" th:field="*{avatar.webPersonal}" /></p>
+        
+        <p>Imagen: <input type="file" name="file" id="imagen" /></p>
+
+        <input type="submit">
+    </form>
+</body>
+</html>

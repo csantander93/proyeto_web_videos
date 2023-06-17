@@ -18,5 +18,6 @@ public interface IPersonaRepository extends JpaRepository <Persona, Serializable
 	
 	public abstract Persona findByApellido(String apellido);
 	public abstract Persona findByDni(long dni);
+	public abstract Persona findById(int id);
 
 }

@@ -28,6 +28,16 @@ public class PersonaService implements IPersonaService{
 		return personaRepository.findAll();
 	}
 	
+	public PersonaModelo traerPorId(int id) {
+		
+		return personaConverter.entityToModel(personaRepository.findById(id));
+		
+	};
+	
+	public PersonaModelo traerPorDni(long dni) {
+		return personaConverter.entityToModel(personaRepository.findByDni(dni));
+	}
+	
 	@Override
 	public PersonaModelo insertOrUpdate(PersonaModelo personaModelo) {
 		

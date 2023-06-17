@@ -15,12 +15,12 @@ public class PersonaConverter {
 	private AvatarConverter avatarConverter;
 	
 	public PersonaModelo entityToModel(Persona persona) {
-		return new PersonaModelo(persona.getId(), persona.getApellido(), persona.getNombres(), persona.getDni(), persona.getPais(),
+		return new PersonaModelo(persona.getId(), persona.getApellido(), persona.getNombres(), persona.getDni(),
 				avatarConverter.entityToModel(persona.getAvatar()));
 	}
 	
 	public Persona modelToEntity(PersonaModelo personaModelo) {
-		return new Persona(personaModelo.getId(), personaModelo.getApellido(), personaModelo.getNombres(), personaModelo.getDni(), personaModelo.getPais(), 
+		return new Persona(personaModelo.getId(), personaModelo.getApellido(), personaModelo.getNombres(), personaModelo.getDni(), 
 				avatarConverter.modelToEntity(personaModelo.getAvatar()));
 	}
 

@@ -2,6 +2,8 @@ package com.example.ejemplos_video.entities;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.Set;
+import java.util.HashSet;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -15,6 +17,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
@@ -40,9 +45,6 @@ public class Persona {
 	@Column(name="dni")
 	private long dni;
 	
-	@Column(name="pais")
-	private String pais;
-	
 	//Opcional datos que se suelen usar en la creacion de tablas
 	@Column(name="creado")
 	@CreationTimestamp
@@ -59,36 +61,64 @@ public class Persona {
 	@JsonIgnore
 	private Avatar avatar;
 	
+	@OneToMany(mappedBy = "persona" , cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<Figurita> figuritas;
+	
+	@ManyToMany(cascade = {
+			CascadeType.PERSIST,
+			CascadeType.MERGE
+	})
+		@JoinTable(name = "persona_pais", 
+		joinColumns = @JoinColumn(name = "persona_id"),
+		inverseJoinColumns = @JoinColumn(name = "pais_id")
+		)
+	private Set<Pais> paises = new HashSet<>();
+	
 	public Persona() {}
 	
-	public Persona(int id ,String apellido, String nombres, long dni, String pais, Avatar avatar) {
+	public Persona(int id ,String apellido, String nombres, long dni, Avatar avatar) {
 		super();
 		this.id = id;
 		this.apellido = apellido;
 		this.nombres = nombres;
 		this.dni = dni;
-		this.pais = pais;
 		this.avatar = avatar;
 	}
 	
-	public Persona(int id ,String apellido, String nombres, long dni, String pais) {
+	public Persona(int id ,String apellido, String nombres, long dni) {
 		super();
 		this.id = id;
 		this.apellido = apellido;
 		this.nombres = nombres;
 		this.dni = dni;
-		this.pais = pais;
 
 	}
 	
-	public Persona(String apellido, String nombres, long dni, String pais, LocalDateTime createdAt, LocalDateTime updatedAt) {
+	public Persona(String apellido, String nombres, long dni, LocalDateTime createdAt, LocalDateTime updatedAt) {
 		super();
 		this.apellido = apellido;
 		this.nombres = nombres;
 		this.dni = dni;
-		this.pais = pais;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
+	}
+	
+	
+
+	public Set<Figurita> getFiguritas() {
+		return figuritas;
+	}
+
+	public void setFiguritas(Set<Figurita> figuritas) {
+		this.figuritas = figuritas;
+	}
+
+	public Set<Pais> getPaises() {
+		return paises;
+	}
+
+	public void setPaises(Set<Pais> paises) {
+		this.paises = paises;
 	}
 
 	public Avatar getAvatar() {
@@ -129,15 +159,6 @@ public class Persona {
 
 	public void setDni(long dni) {
 		this.dni = dni;
-	}
-	
-
-	public String getPais() {
-		return pais; 
-	}
-
-	public void setPais(String pais) {
-		this.pais = pais;
 	}
 
 	public LocalDateTime getCreatedAt() {
